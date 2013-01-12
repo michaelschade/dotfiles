@@ -1,0 +1,1 @@
+../submodules/vim-coffeescript/compiler/coffee.vim

@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+export PATH=$PATH:$HOME/.usr/bin
+export PYTHONPATH=/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages/
+export EDITOR=/usr/bin/vim

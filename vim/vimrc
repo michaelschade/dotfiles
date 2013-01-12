@@ -1,0 +1,78 @@
+call pathogen#infect()
+call pathogen#helptags()
+
+if has('gui_running')
+  colorscheme solarized
+  set background=light
+else
+  colorscheme wombat
+endif
+
+syntax on
+set nocompatible
+set nowrap
+set autoindent
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set incsearch
+set number
+set formatoptions=1
+set lbr
+set expandtab
+set smarttab
+set nohlsearch
+set ignorecase
+set smartcase
+set nobackup
+set backspace=indent,eol,start
+set so=5 " Keep 5 lines above/below cursor always
+nnoremap ; :
+set list listchars=tab:»·,trail:·
+set viminfo=%,'50,f1,\"100,n~/.viminfo
+set foldmethod=syntax " Folding
+nnoremap \zz :let &scrolloff=999-&scrolloff<CR>
+let mapleader=","
+
+" 80 Columns Is Best
+match ErrorMsg '\%>80v.\+'
+
+" Window resizing
+map + <C-W>+
+map - <C-W>-
+
+" Shell
+map <leader>s  :match<CR>:set nolist<CR>:ConqueTerm zsh<CR>
+map <leader>sh :match<CR>:set nolist<CR>:ConqueTermSplit zsh<CR>
+map <leader>sv :match<CR>:set nolist<CR>:ConqueTermVSplit zsh<CR>
+
+" JSON Syntax Highlighting
+" via http://www.vim.org/scripts/script.php?script_id=1945
+augroup json_autocmd
+    autocmd!
+    autocmd FileType json set autoindent
+    autocmd FileType json set formatoptions=tcq2l
+    autocmd FileType json set textwidth=78 shiftwidth=4
+    autocmd FileType json set softtabstop=4 tabstop=8
+    autocmd FileType json set expandtab
+    autocmd FileType json set foldmethod=syntax
+    augroup END
+
+" NERD Tree
+map <leader>n :NERDTree<CR>
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" taglist
+map <leader>l :TlistToggle<CR>
+
+" fugitive
+map <leader>gb :Gblame<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gw :Gwrite<CR>
+map <leader>gr :Gread<CR>
+map <leader>gs :Gstatus<CR>
+map <leader>gd :Gdiff<CR>
+map <leader>gp :diffput<CR>
+map <leader>gg :diffget<CR>
+map <leader>gu :diffupdate<CR>

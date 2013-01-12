@@ -1,0 +1,39 @@
+#!/bin/zsh
+
+# history configuration
+HISTFILE=~/.history
+HISTSIZE=5000
+SAVEHIST=10000
+setopt incappendhistory sharehistory histsavenodups
+
+# various little options
+setopt autocd correct hashcmds autolist automenu
+setopt extendedglob nomatch autoparamslash
+setopt interactivecomments noclobber
+unsetopt beep notify hup
+bindkey -e
+
+# fancy autocompletion
+autoload -U compinit && compinit
+
+# basic environment variables
+export EDITOR='vim'
+export PATH="$PATH \
+           :/usr/local/sbin \
+           :$HOME/.bin \
+           :$HOME/Library/Haskell/bin \
+           :$HOME/node_modules/.bin \
+           "
+export TERM='xterm-256color'
+
+# some nice little alias tweaks
+alias ls='ls -G'
+
+source ~/.zsh/keybindings   # makes the delete and home keys work
+source ~/.zsh/prompt        # pretty prompt configuration
+source ~/.zsh/path          # path configuraton
+
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# No spaces (easy pretty printing, and I don't use spaces in dir names anyway)
+export PATH=`echo $PATH | sed -E 's/ *//g'`
