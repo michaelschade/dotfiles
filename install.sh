@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git submodule update --recursive
+git submodule update --init --recursive
 
 ln -s $PWD/vim $HOME/.vim
 ln -s $PWD/vim/vimrc $HOME/.vimrc
