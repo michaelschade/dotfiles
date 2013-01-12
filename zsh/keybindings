@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-bindkey '^[[H'  beginning-of-line  # home
-bindkey '^[[F'  end-of-line        # end
-bindkey '^[[3~' delete-char        # delete
-bindkey '^[[5~' insert-last-word   # pg-up
-bindkey '^[[6~' end-of-history     # pg-down
-bindkey '^[[2~' overwrite-mode     # insert
