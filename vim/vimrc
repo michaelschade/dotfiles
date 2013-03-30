@@ -30,7 +30,8 @@ set so=5 " Keep 5 lines above/below cursor always
 nnoremap ; :
 set list listchars=tab:»·,trail:·
 set viminfo=%,'50,f1,\"100,n~/.viminfo
-set foldmethod=syntax " Folding
+set foldmethod=indent " Folding
+set foldlevelstart=99
 nnoremap \zz :let &scrolloff=999-&scrolloff<CR>
 let mapleader=","
 
@@ -49,14 +50,14 @@ map <leader>sv :match<CR>:set nolist<CR>:ConqueTermVSplit zsh<CR>
 " JSON Syntax Highlighting
 " via http://www.vim.org/scripts/script.php?script_id=1945
 augroup json_autocmd
-    autocmd!
-    autocmd FileType json set autoindent
-    autocmd FileType json set formatoptions=tcq2l
-    autocmd FileType json set textwidth=78 shiftwidth=4
-    autocmd FileType json set softtabstop=4 tabstop=8
-    autocmd FileType json set expandtab
-    autocmd FileType json set foldmethod=syntax
-    augroup END
+  autocmd!
+  autocmd FileType json set autoindent
+  autocmd FileType json set formatoptions=tcq2l
+  autocmd FileType json set textwidth=78 shiftwidth=2
+  autocmd FileType json set softtabstop=2 tabstop=2
+  autocmd FileType json set expandtab
+  autocmd FileType json set foldmethod=syntax
+augroup END
 
 " NERD Tree
 map <leader>n :NERDTree<CR>
@@ -67,12 +68,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 map <leader>l :TlistToggle<CR>
 
 " fugitive
-map <leader>gb :Gblame<CR>
-map <leader>gc :Gcommit<CR>
-map <leader>gw :Gwrite<CR>
-map <leader>gr :Gread<CR>
-map <leader>gs :Gstatus<CR>
-map <leader>gd :Gdiff<CR>
-map <leader>gp :diffput<CR>
-map <leader>gg :diffget<CR>
-map <leader>gu :diffupdate<CR>
+map <leader>fb :Gblame<CR>
+map <leader>fc :Gcommit<CR>
+map <leader>fw :Gwrite<CR>
+map <leader>fr :Gread<CR>
+map <leader>fs :Gstatus<CR>
+map <leader>fd :Gdiff<CR>
+map <leader>fp :diffput<CR>
+map <leader>fg :diffget<CR>
+map <leader>fu :diffupdate<CR>
+
+" golang
+map <leader>gr :!go run %:p<CR><CR>
+map <leader>gf :!gofmt -w %:p<CR><CR>:e<CR>
