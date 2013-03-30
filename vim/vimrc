@@ -79,5 +79,5 @@ map <leader>fg :diffget<CR>
 map <leader>fu :diffupdate<CR>
 
 " golang
-map <leader>gr :!go run %:p<CR><CR>
+map <leader>gr :!go run %:p<CR>
 map <leader>gf :!gofmt -w %:p<CR><CR>:e<CR>
