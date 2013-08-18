@@ -2,7 +2,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 colorscheme solarized
-set background=dark
+set background=light
 
 " if has('gui_running')
 "   colorscheme solarized
