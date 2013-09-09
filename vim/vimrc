@@ -1,15 +1,12 @@
 call pathogen#infect()
 call pathogen#helptags()
 
-colorscheme solarized
 set background=dark
-
-" if has('gui_running')
-"   colorscheme solarized
-"   set background=light
-" else
-"   colorscheme wombat
-" endif
+if has('gui_running')
+  colorscheme wombat
+else
+  colorscheme solarized
+endif
 
 syntax on
 set nocompatible
