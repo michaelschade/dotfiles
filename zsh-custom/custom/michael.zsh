@@ -28,6 +28,9 @@ export TERM='xterm-256color'
 
 # some nice little alias tweaks
 alias ls='ls -G'
+if [ `uname` = "Darwin" ]; then
+  alias vim='mvim -v'
+fi
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 

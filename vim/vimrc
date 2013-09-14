@@ -26,6 +26,7 @@ set ignorecase
 set smartcase
 set nobackup
 set backspace=indent,eol,start
+set clipboard=unnamed
 set so=5 " Keep 5 lines above/below cursor always
 nnoremap ; :
 set list listchars=tab:»·,trail:·
