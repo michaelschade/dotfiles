@@ -28,6 +28,9 @@ export TERM='xterm-256color'
 
 # some nice little alias tweaks
 alias ls='ls -G'
+alias bi='bundle install'
+alias be='bundle exec'
+alias gg='git grep'
 if [ `uname` = "Darwin" ]; then
   alias vim='mvim -v'
 fi
