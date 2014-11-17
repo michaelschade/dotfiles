@@ -39,10 +39,6 @@ let mapleader=","
 " 80 Columns Is Best
 match ErrorMsg '\%>80v.\+'
 
-" Window resizing
-map + <C-W>+
-map - <C-W>-
-
 " Shell
 map <leader>s  :match<CR>:set nolist<CR>:ConqueTerm zsh<CR>
 map <leader>sh :match<CR>:set nolist<CR>:ConqueTermSplit zsh<CR>
@@ -59,6 +55,9 @@ augroup json_autocmd
   autocmd FileType json set expandtab
   autocmd FileType json set foldmethod=syntax
 augroup END
+
+" misc maps
+map U :redo<CR>
 
 " NERD Tree
 map <leader>n :NERDTree<CR>
@@ -82,3 +81,21 @@ map <leader>fu :diffupdate<CR>
 " golang
 map <leader>gr :!go run %:p<CR>
 map <leader>gf :!gofmt -w %:p<CR><CR>:e<CR>
+
+" window management
+map + <C-W>+
+map - <C-W>-
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map <C-x> <C-w>x
+map <C-r> <C-w>r
+map <C-R> <C-w>R
+
+" tab management
+map <C-t> gt
+map <C-T> gT
+
+map <C-n> <C-w><
+map <C-m> <C-w>>
