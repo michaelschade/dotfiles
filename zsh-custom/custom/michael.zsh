@@ -36,3 +36,5 @@ alias gg='git grep'
 if [ `uname` = "Darwin" ]; then
   alias vim='mvim -v'
 fi
+
+alias excelsior="ssh excelsior -t tmux a"
