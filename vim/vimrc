@@ -39,6 +39,12 @@ let mapleader=","
 " 80 Columns Is Best
 match ErrorMsg '\%>80v.\+'
 
+" golang
+augroup FileType go
+  set nolist
+  nmap <leader>gr :!go run %:p<CR>
+augroup END
+
 " Shell
 map <leader>s  :match<CR>:set nolist<CR>:ConqueTerm zsh<CR>
 map <leader>sh :match<CR>:set nolist<CR>:ConqueTermSplit zsh<CR>
@@ -77,10 +83,6 @@ map <leader>fd :Gdiff<CR>
 map <leader>fp :diffput<CR>
 map <leader>fg :diffget<CR>
 map <leader>fu :diffupdate<CR>
-
-" golang
-map <leader>gr :!go run %:p<CR>
-map <leader>gf :!gofmt -w %:p<CR><CR>:e<CR>
 
 " window management
 map + <C-W>+

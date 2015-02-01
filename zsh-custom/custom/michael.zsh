@@ -18,13 +18,15 @@ autoload -U compinit && compinit
 
 # basic environment variables
 export EDITOR='vim'
-export PATH="$PATH \
-           :/usr/local/sbin \
-           :$HOME/.bin \
-           :$HOME/Library/Haskell/bin \
-           :$HOME/node_modules/.bin \
-           "
 export TERM='xterm-256color'
+export GOPATH=$HOME/Dropbox/code/go
+export MYGO=$GOPATH/src/github.com/michaelschade
+export PATH="$PATH \
+           :$HOME/node_modules/.bin \
+           :$HOME/.rvm/bin \
+           :$GOPATH/bin
+           "
+export PATH=`echo $PATH | sed -E 's/ *//g'`
 
 # some nice little alias tweaks
 alias ls='ls -G'
@@ -34,12 +36,3 @@ alias gg='git grep'
 if [ `uname` = "Darwin" ]; then
   alias vim='mvim -v'
 fi
-
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export PATH=$PATH:$HOME/.usr/bin
-export PYTHONPATH=/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages/
-export EDITOR=/usr/bin/vim
-
-# No spaces (easy pretty printing, and I don't use spaces in dir names anyway)
-export PATH=`echo $PATH | sed -E 's/ *//g'`
