@@ -2,3 +2,4 @@
 .DS_STORE
 vim/.netrwhist
 vim/doc/tags
+tmux/plugins/*
