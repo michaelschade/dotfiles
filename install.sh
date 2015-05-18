@@ -2,14 +2,18 @@
 
 git submodule update --init --recursive
 
-ln -s $PWD/tmux $HOME/.tmux
-ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
+ln -fs $PWD/tmux $HOME/.tmux
+ln -fs $PWD/tmux/tmux.conf $HOME/.tmux.conf
 
-ln -s $PWD/vim $HOME/.vim
-ln -s $PWD/vim/vimrc $HOME/.vimrc
+# setup vim
+brew install ctags-exuberant
+$PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer
+ln -fs $PWD/vim $HOME/.vim
+ln -fs $PWD/vim/vimrc $HOME/.vimrc
 
+# setup zsh
 cp -R $PWD/zsh-custom/* $PWD/zsh
-ln -s $PWD/zsh $HOME/.zsh
-ln -s $PWD/zsh/zshrc $HOME/.zshrc
+ln -fs $PWD/zsh $HOME/.zsh
+ln -fs $PWD/zsh/zshrc $HOME/.zshrc
 
-ln -s $PWD/Xresources $HOME/.Xresources
+ln -fs $PWD/Xresources $HOME/.Xresources
