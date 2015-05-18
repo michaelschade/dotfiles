@@ -127,3 +127,11 @@ map <C-T> gT
 
 map <C-n> <C-w><
 map <C-m> <C-w>>
+
+" make ultisnips and youcompleteme play nice
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<c-n>'
+let g:UltiSnipsExpandTrigger = "<c-n>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
