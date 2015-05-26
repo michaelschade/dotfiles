@@ -9,7 +9,7 @@ set background=dark
 if has('gui_running')
   colorscheme wombat
 else
-  colorscheme solarized
+  colorscheme monokai
 endif
 
 syntax on
@@ -31,6 +31,7 @@ set smartcase
 set nobackup
 set backspace=indent,eol,start
 set clipboard=unnamed
+set directory=~/.vimswap
 set so=5 " Keep 5 lines above/below cursor always
 nnoremap ; :
 set list listchars=tab:»·,trail:·
@@ -62,14 +63,19 @@ augroup FileType go
   nmap <leader>gb <Plug>(go-build)
   nmap <leader>gt <Plug>(go-test)
   nmap <leader>gc <Plug>(go-coverage)
+  nmap <leader>gI <Plug>(go-install)
 
   " documentation
-  nmap <Leader>gDs <Plug>(go-def-split)
-  nmap <Leader>gDv <Plug>(go-def-vertical)
+  nmap <Leader>gs  <Plug>(go-def)
+  nmap <Leader>gSs <Plug>(go-def-split)
+  nmap <Leader>gSv <Plug>(go-def-vertical)
   nmap <Leader>gd  <Plug>(go-doc)
   nmap <Leader>gv  <Plug>(go-doc-vertical)
-  nmap <Leader>gi <Plug>(go-implements)
+  nmap <Leader>gi  <Plug>(go-implements)
 augroup END
+
+" BufExplorer
+nmap <leader>b :BufExplorer<CR>
 
 " Shell
 map <leader>s  :match<CR>:set nolist<CR>:ConqueTerm zsh<CR>
@@ -97,7 +103,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " taglist
-map <leader>l :TlistToggle<CR>
+map <leader>l :TagbarToggle<CR>
 
 " fugitive
 map <leader>Gb :Gblame<CR>
