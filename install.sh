@@ -14,7 +14,7 @@ mkdir -p $HOME/.vimswap
 
 # setup zsh
 ln -nsf $PWD/zsh-custom $HOME/.zsh-custom
+ln -nsf $PWD/zsh-custom/zshrc $HOME/.zshrc
 ln -nsf $PWD/zsh $HOME/.zsh
-ln -nsf $PWD/zsh/zshrc $HOME/.zshrc
 
 ln -nsf $PWD/Xresources $HOME/.Xresources
