@@ -18,7 +18,6 @@ autoload -U compinit && compinit
 
 # basic environment variables
 export EDITOR='vim'
-export TERM='xterm-256color'
 export GOPATH=$HOME/Dropbox/code/go
 export MYGO=$GOPATH/src/github.com/michaelschade
 export PATH="$PATH \
@@ -27,6 +26,7 @@ export PATH="$PATH \
            :$GOPATH/bin
            "
 export PATH=`echo $PATH | sed -E 's/ *//g'`
+[[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 # some nice little alias tweaks
 alias ls='ls -G'
