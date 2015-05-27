@@ -10,7 +10,7 @@ brew install ctags-exuberant the_silver_searcher
 $PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer
 ln -fs $PWD/vim $HOME/.vim
 ln -fs $PWD/vim/vimrc $HOME/.vimrc
-mkdir $HOME/.vimswap
+mkdir -p $HOME/.vimswap
 
 # setup zsh
 cp -R $PWD/zsh-custom/* $PWD/zsh
