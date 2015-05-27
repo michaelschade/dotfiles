@@ -6,7 +6,7 @@ ln -fs $PWD/tmux $HOME/.tmux
 ln -fs $PWD/tmux/tmux.conf $HOME/.tmux.conf
 
 # setup vim
-brew install ctags-exuberant
+brew install ctags-exuberant the_silver_searcher
 $PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer
 ln -fs $PWD/vim $HOME/.vim
 ln -fs $PWD/vim/vimrc $HOME/.vimrc

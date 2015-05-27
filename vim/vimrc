@@ -99,8 +99,9 @@ map U :redo<CR>
 
 " NERD Tree
 map <leader>n :NERDTree<CR>
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autoload NERD tree
+"autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " taglist
 map <leader>l :TagbarToggle<CR>
@@ -133,6 +134,11 @@ map <C-T> gT
 
 map <C-n> <C-w><
 map <C-m> <C-w>>
+
+" fuzzy search
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ackprg = 'ag --vimgrep'
 
 " make ultisnips and youcompleteme play nice
 "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
