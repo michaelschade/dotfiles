@@ -1,5 +1,10 @@
 filetype off
 
+let g:pathogen_disabled = []
+if system('cat /proc/device-tree/model') =~# "Raspberry Pi"
+  call add(g:pathogen_disabled, 'YouCompleteMe')
+  call add(g:pathogen_disabled, 'ultisnips')
+endif
 call pathogen#infect()
 call pathogen#helptags()
 
