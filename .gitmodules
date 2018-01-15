@@ -40,3 +40,12 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git@github.com:kien/ctrlp.vim.git
+[submodule "vim/bundle/paredit"]
+	path = vim/bundle/paredit
+	url = git@github.com:vim-scripts/paredit.vim.git
+[submodule "vim/bundle/fireplace"]
+	path = vim/bundle/fireplace
+	url = git@github.com:tpope/vim-fireplace.git
+[submodule "vim/bundle/salve"]
+	path = vim/bundle/salve
+	url = git@github.com:tpope/vim-salve.git

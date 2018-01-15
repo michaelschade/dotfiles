@@ -23,6 +23,7 @@ export MYGO=$GOPATH/src/github.com/michaelschade
 export PATH="$PATH \
            :$HOME/node_modules/.bin \
            :$HOME/.rvm/bin \
+           :/usr/local/lib/python3.5/site-packages \
            :$GOPATH/bin
            "
 export PATH=`echo $PATH | sed -E 's/ *//g'`
@@ -33,6 +34,8 @@ alias ls='ls -G'
 alias bi='bundle install'
 alias be='bundle exec'
 alias gg='git grep'
+alias python='python3'
+alias hack='nethack'
 if [ `uname` = "Darwin" ]; then
   alias vim='mvim -v'
 fi
