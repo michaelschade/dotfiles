@@ -3,3 +3,5 @@
 vim/.netrwhist
 vim/doc/tags
 tmux/plugins/*
+tmux/resurrect
+tmux*.log

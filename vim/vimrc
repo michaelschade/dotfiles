@@ -47,7 +47,7 @@ nnoremap \zz :let &scrolloff=999-&scrolloff<CR>
 let mapleader=","
 
 " 80 Columns Is Best
-match ErrorMsg '\%>80v.\+'
+" match ErrorMsg '\%>80v.\+'
 
 " golang
 augroup FileType go
@@ -125,6 +125,8 @@ map <leader>Gu :diffupdate<CR>
 " window management
 map + <C-W>+
 map - <C-W>-
+map <C-n> <C-w><
+map <C-m> <C-w>>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -137,12 +139,10 @@ map <C-R> <C-w>R
 map <C-t> gt
 map <C-T> gT
 
-map <C-n> <C-w><
-map <C-m> <C-w>>
-
 " fuzzy search
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 let g:ackprg = 'ag --vimgrep'
 
 " make ultisnips and youcompleteme play nice

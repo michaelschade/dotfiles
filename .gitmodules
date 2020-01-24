@@ -37,9 +37,6 @@
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
-	url = git@github.com:kien/ctrlp.vim.git
 [submodule "vim/bundle/paredit"]
 	path = vim/bundle/paredit
 	url = git@github.com:vim-scripts/paredit.vim.git
@@ -49,3 +46,15 @@
 [submodule "vim/bundle/salve"]
 	path = vim/bundle/salve
 	url = git@github.com:tpope/vim-salve.git
+[submodule "vim/bundle/vim-ember-hbs"]
+	path = vim/bundle/vim-ember-hbs
+	url = git@github.com:joukevandermaas/vim-ember-hbs.git
+[submodule "vim/bundle/vim-obsession"]
+	path = vim/bundle/vim-obsession
+	url = git@github.com:tpope/vim-obsession.git
+[submodule "vim/bundle/vim-jsx"]
+	path = vim/bundle/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
