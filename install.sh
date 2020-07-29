@@ -16,9 +16,21 @@ if [ "$WITHOUT_YCM" != 1 ]; then
 else
   echo "Skipping YCM"
 fi
+
+if [ `uname` = "Darin" ]; then
+  brew install pyenv pyenv-virtualenv
+fi
+
+# vimproc for typescript
+pushd $PWD/vim/bundle/vimproc
+make
+popd
+
 ln -nsf $PWD/vim $HOME/.vim
 ln -nsf $PWD/vim/vimrc $HOME/.vimrc
 mkdir -p $HOME/.vimswap
+ln -nsf $PWD/vim $HOME/.config/nvim
+ln -nsf $PWD/nvim/init.vim $HOME/.config/nvim/init.vim
 
 # setup zsh
 ln -nsf $PWD/zsh-custom $HOME/.zsh-custom

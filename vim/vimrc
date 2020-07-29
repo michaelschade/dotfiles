@@ -40,7 +40,6 @@ set directory=~/.vimswap
 set so=5 " Keep 5 lines above/below cursor always
 nnoremap ; :
 set list listchars=tab:»·,trail:·
-set viminfo=%,'50,f1,\"100,n~/.viminfo
 set foldmethod=indent " Folding
 set foldlevelstart=99
 nnoremap \zz :let &scrolloff=999-&scrolloff<CR>
@@ -78,6 +77,25 @@ augroup FileType go
   nmap <Leader>gv  <Plug>(go-doc-vertical)
   nmap <Leader>gi  <Plug>(go-implements)
 augroup END
+
+augroup FileType python
+  autocmd FileType python setlocal tabstop=4
+  autocmd FileType python setlocal shiftwidth=4
+augroup END
+
+" TypeScript
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+" Recommended syntastic beginner config
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:statline_syntastic = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " BufExplorer
 nmap <leader>b :BufExplorer<CR>
@@ -144,11 +162,3 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 let g:ackprg = 'ag --vimgrep'
-
-" make ultisnips and youcompleteme play nice
-"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<c-n>'
-let g:UltiSnipsExpandTrigger = "<c-n>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
