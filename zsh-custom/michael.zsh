@@ -52,7 +52,7 @@ alias gg='git grep'
 alias python='python3'
 alias hack='nethack'
 if [ `uname` = "Darwin" ]; then
-  alias vim='mvim -v'
+  alias vim='nvim'
 fi
 
 # electron

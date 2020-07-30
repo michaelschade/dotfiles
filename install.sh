@@ -7,7 +7,7 @@ ln -nsf $PWD/tmux/tmux.conf $HOME/.tmux.conf
 
 # setup vim
 if [ `uname` = "Darwin" ]; then
-  brew install cmake ctags-exuberant the_silver_searcher macvim
+  brew install cmake ctags-exuberant the_silver_searcher neovim
 else
   sudo apt-get install vim cmake exuberant-ctags silversearcher-ag
 fi

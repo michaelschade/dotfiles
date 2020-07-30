@@ -1,10 +1,15 @@
 filetype off
 
-let g:pathogen_disabled = []
-if system('cat /proc/device-tree/model') =~# "Raspberry Pi"
-  call add(g:pathogen_disabled, 'YouCompleteMe')
-  call add(g:pathogen_disabled, 'ultisnips')
+if has('nvim')
+  call plug#begin('~/.vim/plugged')
+  Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+  hi CocErrorSign ctermfg=218
+  " hi CocHintSign ctermfg=218
+  hi CocInfoSign ctermfg=111
+  call plug#end()
 endif
+
+let g:pathogen_disabled = []
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -42,6 +47,7 @@ nnoremap ; :
 set list listchars=tab:»·,trail:·
 set foldmethod=indent " Folding
 set foldlevelstart=99
+set mouse=a
 nnoremap \zz :let &scrolloff=999-&scrolloff<CR>
 let mapleader=","
 
@@ -84,13 +90,25 @@ augroup FileType python
 augroup END
 
 " TypeScript
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+augroup FileType typescript
+  nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+  " Show autocomplete when Tab is pressed
+  inoremap <silent><expr> <Tab> coc#refresh()
+  " GoTo code navigation.
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+  " let g:tsuquyomi_disable_quickfix = 1
+  " let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
-" Recommended syntastic beginner config
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+  " Recommended syntastic beginner config
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
+augroup END
 
+" Syntastic
 let g:statline_syntastic = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
