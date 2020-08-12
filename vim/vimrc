@@ -3,6 +3,8 @@ filetype off
 if has('nvim')
   call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
   hi CocErrorSign ctermfg=218
   " hi CocHintSign ctermfg=218
   hi CocInfoSign ctermfg=111
@@ -91,7 +93,7 @@ augroup END
 
 " TypeScript
 augroup FileType typescript
-  nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+  nmap <buffer> <Leader>t :call CocAction('doHover')<CR>
   " Show autocomplete when Tab is pressed
   inoremap <silent><expr> <Tab> coc#refresh()
   " GoTo code navigation.
@@ -107,6 +109,9 @@ augroup FileType typescript
   " set statusline+=%{SyntasticStatuslineFlag()}
   " set statusline+=%*
 augroup END
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+"autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Syntastic
 let g:statline_syntastic = 0

@@ -22,7 +22,8 @@ export PGPASSWORD=postgres
 export EDITOR='vim'
 export GOPATH=$HOME/Dropbox/code/go
 export MYGO=$GOPATH/src/github.com/michaelschade
-export PATH="$PATH \
+export PATH="/usr/local/bin \
+           :$PATH \
            :$HOME/node_modules/.bin \
            :$HOME/.rvm/bin \
            :$HOME/.cargo/bin \

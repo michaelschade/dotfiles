@@ -3,6 +3,7 @@
   "suggest.triggerAfterInsertEnter": true,
   "list.autoResize": false,
   // "suggest.echodocSupport": true,
+  "tsserver.enable": true,
   "typescript.format.enabled": true,
   "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
   "typescript.validate.enable": true,
@@ -19,6 +20,7 @@
   "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
   "coc.preferences.formatOnSaveFiletypes": [
-    "typescript"
+    "typescript",
+    "typescriptreact"
   ]
 }
