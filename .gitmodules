@@ -64,3 +64,6 @@
 [submodule "vim/vim/bundle/syntastic"]
 	path = vim/vim/bundle/syntastic
 	url = git@github.com:vim-syntastic/syntastic.git
+[submodule "vim/bundle/tsuquyomi"]
+	path = vim/bundle/tsuquyomi
+	url = git@github.com:Quramy/tsuquyomi.git
