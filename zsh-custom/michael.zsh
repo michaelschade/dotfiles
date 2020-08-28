@@ -31,7 +31,6 @@ export PATH="/usr/local/bin \
            :/usr/local/opt/libpq/bin \
            "
 export PATH=`echo $PATH | sed -E 's/ *//g'`
-source $HOME/.ghcup/env
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 # nvm
