@@ -17,11 +17,6 @@ if [ `uname` = "Darwin" ]; then
 else
   sudo apt-get install vim cmake exuberant-ctags silversearcher-ag
 fi
-if [ "$WITHOUT_YCM" != 1 ]; then
-  $PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer --system-libclang
-else
-  echo "Skipping YCM"
-fi
 
 if [ `uname` = "Darin" ]; then
   brew install pyenv pyenv-virtualenv
