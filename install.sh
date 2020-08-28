@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git submodule update --init --recursive
+git submodule update --recursive --remote
 
 ln -nsf $PWD/tmux $HOME/.tmux
 ln -nsf $PWD/tmux/tmux.conf $HOME/.tmux.conf
