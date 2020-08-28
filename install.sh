@@ -1,10 +1,12 @@
 #!/bin/sh
 
-if ![ -x "$(brew -v)" ]; then
+if ! [ -x "$(command -v brew)" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-brew install git
+if ! [ -x "$(command -v git)" ]; then
+  brew install git
+fi
 
 git submodule update --recursive --remote
 
