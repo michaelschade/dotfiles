@@ -21,7 +21,7 @@
 	url = https://github.com/c9s/bufexplorer.git
 [submodule "zsh"]
 	path = zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
+	url = git@github.com:robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
