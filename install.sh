@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if ![ -x "$(brew -v)" ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+brew install git
+
 git submodule update --recursive --remote
 
 ln -nsf $PWD/tmux $HOME/.tmux
