@@ -29,6 +29,7 @@ popd
 ln -nsf $PWD/vim $HOME/.vim
 ln -nsf $PWD/vim/vimrc $HOME/.vimrc
 mkdir -p $HOME/.vimswap
+mkdir -p $HOME/.config
 ln -nsf $PWD/vim $HOME/.config/nvim
 ln -nsf $PWD/nvim/init.vim $HOME/.config/nvim/init.vim
 
