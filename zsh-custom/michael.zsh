@@ -27,18 +27,12 @@ export PATH="/usr/local/bin \
            :$HOME/node_modules/.bin \
            :$HOME/.rvm/bin \
            :$HOME/.cargo/bin \
-           :/usr/local/lib/python3.5/site-packages \
            :$GOPATH/bin \
            :/usr/local/opt/libpq/bin \
            "
 export PATH=`echo $PATH | sed -E 's/ *//g'`
 source $HOME/.ghcup/env
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
-
-# Python setup
-export PIPENV_VENV_IN_PROJECT=1
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # nvm
 # export NVM_DIR="$HOME/.nvm"
