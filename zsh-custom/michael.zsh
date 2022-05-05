@@ -31,7 +31,14 @@ export PATH="/usr/local/bin \
            :/usr/local/opt/libpq/bin \
            "
 export PATH=`echo $PATH | sed -E 's/ *//g'`
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
+
+# pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # nvm
 # export NVM_DIR="$HOME/.nvm"
@@ -43,8 +50,8 @@ alias ls='ls -G'
 alias bi='bundle install'
 alias be='bundle exec'
 alias gg='git grep'
-alias python='python3'
 alias hack='nethack'
+alias x86brew='/usr/local/bin/brew'
 if [ `uname` = "Darwin" ]; then
   alias vim='nvim'
 fi

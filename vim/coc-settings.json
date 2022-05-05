@@ -1,11 +1,12 @@
 {
   "suggest.noselect": false,
   "suggest.triggerAfterInsertEnter": true,
-  "list.autoResize": false,
+  "suggest.echodocSupport": true,
   // "suggest.echodocSupport": true,
   "tsserver.enable": true,
   "typescript.format.enabled": true,
   "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+  "typescript.suggest.enabled": true,
   "typescript.validate.enable": true,
   "typescript.format.insertSpaceAfterCommaDelimiter": true,
   "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
@@ -20,7 +21,9 @@
   "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "eslint.autoFixOnSave": true
 }
