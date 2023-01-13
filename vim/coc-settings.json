@@ -1,7 +1,6 @@
 {
   "suggest.noselect": false,
   "suggest.triggerAfterInsertEnter": true,
-  "suggest.echodocSupport": true,
   // "suggest.echodocSupport": true,
   "tsserver.enable": true,
   "typescript.format.enabled": true,
@@ -20,6 +19,7 @@
   "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
   "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "javascript.suggestionActions.enabled": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",

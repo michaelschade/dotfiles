@@ -1,9 +1,6 @@
 [submodule "vim/submodules/vim-surround"]
 	path = vim/submodules/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/submodules/vim-coffeescript"]
-	path = vim/submodules/vim-coffeescript
-	url = https://github.com/vim-scripts/vim-coffee-script.git
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git

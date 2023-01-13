@@ -1,1 +1,0 @@
-../submodules/vim-coffeescript/doc/coffee-script.txt

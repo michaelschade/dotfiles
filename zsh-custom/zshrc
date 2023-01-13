@@ -13,6 +13,7 @@ ZSH_THEME="michael"
 plugins=(git bundler dircycle gem knife)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.zsh_secrets.sh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
