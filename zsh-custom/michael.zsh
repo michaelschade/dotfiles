@@ -19,7 +19,7 @@ autoload -U compinit && compinit
 # basic environment variables
 export PGUSER=postgres
 export PGPASSWORD=postgres
-export EDITOR='vim'
+export EDITOR='code'
 export GOPATH=$HOME/Dropbox/code/go
 export MYGO=$GOPATH/src/github.com/michaelschade
 export PATH="/usr/local/bin \
@@ -31,6 +31,7 @@ export PATH="/usr/local/bin \
            :/usr/local/opt/libpq/bin \
            "
 export PATH=`echo $PATH | sed -E 's/ *//g'`
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
