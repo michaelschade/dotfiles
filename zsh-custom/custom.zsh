@@ -40,7 +40,12 @@ path=(
   "/usr/local/bin"
   $path
 )
-export PATH=$(echo $path | tr ' ' ':')
+
+# Concatenate PATHs, accounting for directories with spaces
+oldIFS=$IFS
+IFS=":"
+export PATH="${path[*]}"
+IFS=$oldIFS
 
 # Homebrew configuration for M1 Macs
 eval "$(/opt/homebrew/bin/brew shellenv)"
