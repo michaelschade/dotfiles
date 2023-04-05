@@ -1,0 +1,60 @@
+{
+  "editor.inlineSuggest.enabled": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.sortJSON": true
+  },
+  "editor.smoothScrolling": true,
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+  "terminal.integrated.copyOnSelection": true,
+  "window.zoomLevel": 1,
+  "editor.renderWhitespace": "all",
+  "editor.cursorBlinking": "phase", // idk
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.autoDetectHighContrast": false,
+  "workbench.tree.indent": 16,
+  "html.format.indentHandlebars": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.minimap.enabled": false,
+  "eslint.packageManager": "yarn",
+  "colorize.languages": [
+    "javascriptreact",
+    "javascript",
+    "css",
+    "scss",
+    "typescript",
+    "typescriptreact"
+  ],
+  "colorize.hide_current_line_decorations": false,
+  "colorize.decoration_type": "underline",
+  "explorer.confirmDragAndDrop": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.excludeGitIgnore": true,
+  "debug.toolBarLocation": "docked",
+  "workbench.activityBar.visible": false,
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "python.poetryPath": "poetry",
+  "python.terminal.activateEnvironment": true,
+  "python.venvPath": "${workspaceFolder}/.venv",
+  "workbench.statusBar.visible": false
+}

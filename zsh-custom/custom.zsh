@@ -59,6 +59,7 @@ alias pip='python -m pip'
 alias x86brew='/usr/local/bin/brew'
 alias tree='tree --gitignore'
 alias tp='tree |pbcopy && echo "Tree copied to clipboard"'
+alias code='code --user-data-dir $HOME/.vscode'
 if [ `uname` = "Darwin" ]; then
   alias vim='nvim'
 fi

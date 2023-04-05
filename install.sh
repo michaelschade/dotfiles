@@ -28,6 +28,8 @@ create_symlinks() {
   ln -nsf $PWD/vim $HOME/.vim
   ln -nsf $PWD/vim/vimrc $HOME/.vimrc
   ln -nsf $PWD/vim $HOME/.config/nvim
+  ln -nsf $PWD/vscode/User/*.json $HOME/.vscode/User
+  ln -nsf $PWD/vscode/extensions/*.json $HOME/.vscode/extensions
   ln -nsf $PWD/nvim/init.vim $HOME/.config/nvim/init.vim
   ln -nsf $PWD/zsh-custom $HOME/.zsh-custom
   ln -nsf $PWD/zsh-custom/zshrc $HOME/.zshrc
@@ -44,6 +46,8 @@ setup_vimproc() {
 create_directories() {
   mkdir -p $HOME/.vimswap
   mkdir -p $HOME/.config
+  mkdir -p $HOME/.vscode/User
+  mkdir -p $HOME/.vscode/extensions
 }
 
 # Ensure dependencies are installed
