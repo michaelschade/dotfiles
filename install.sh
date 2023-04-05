@@ -8,6 +8,7 @@ if ! [ -x "$(command -v git)" ]; then
   brew install git
 fi
 
+ln -nsf $PWD/gitconfig $HOME/.gitconfig
 git submodule update --recursive --remote
 
 ln -nsf $PWD/tmux $HOME/.tmux
