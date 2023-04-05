@@ -20,10 +20,6 @@ export PGPASSWORD=postgres
 export EDITOR='code'
 export GOPATH=$HOME/Dropbox/code/go
 export MYGO=$GOPATH/src/github.com/michaelschade
-export PYENV_ROOT="$HOME/.pyenv"
-
-# pyenv setup
-eval "$(pyenv init -)"
 
 # PATH configuration
 path=(
@@ -33,7 +29,6 @@ path=(
   "$HOME/node_modules/.bin"
   "$HOME/.rvm/bin"
   "/usr/local/opt/libpq/bin"
-  "$PYENV_ROOT/bin"
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
   "$HOME/.yarn/bin"
   "$HOME/.config/yarn/global/node_modules/.bin"
