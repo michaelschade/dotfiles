@@ -66,5 +66,31 @@
     "key": "shift+cmd+enter",
     "command": "python.execInTerminal",
     "when": "editorTextFocus && !findInputFocussed && !jupyter.ownsSelection && !notebookEditorFocused && !replaceInputFocussed"
+  },
+
+  /* Text motions */
+
+  // Allow optn+left/right to move by word part (e.g. camelCase and snake_case)
+  {
+    "key": "alt+left",
+    "command": "cursorWordPartLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+right",
+    "command": "cursorWordPartRight",
+    "when": "textInputFocus"
+  },
+
+  // But shift+optn+left/right should still select the whole word
+  {
+    "key": "shift+alt+left",
+    "command": "cursorWordStartLeftSelect",
+    "when": "textInputFocus && !editorHasSelection"
+  },
+  {
+    "key": "shift+alt+right",
+    "command": "cursorWordStartRightSelect",
+    "when": "textInputFocus && !editorHasSelection"
   }
 ]

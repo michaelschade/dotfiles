@@ -51,7 +51,6 @@
   },
   "workbench.statusBar.visible": false,
   "python.venvPath": "${workspaceFolder}/.venv",
-  "editor.wordSeparators": "`~!@#$%^&*()-=_+[{]}\\|;:'\",.<>/?",
   "[python]": {
     "editor.formatOnType": true
   },
