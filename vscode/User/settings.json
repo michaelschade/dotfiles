@@ -1,11 +1,17 @@
 {
-  // General settings
+  // Editor display settings
   "editor.inlineSuggest.enabled": true,
   "editor.formatOnPaste": true,
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
   "editor.renderWhitespace": "all",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.colorCustomizations": {
+    "editorInlayHint.background": "#1E1E1E",
+    "editorInlayHint.foreground": "#777777"
+  },
+
+  // General settings
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.tabs.enabled": true,
   "window.zoomLevel": 1,
@@ -73,5 +79,6 @@
   },
 
   // Other language-specific settings
-  "html.format.indentHandlebars": true
+  "html.format.indentHandlebars": true,
+  "editor.minimap.enabled": false
 }
