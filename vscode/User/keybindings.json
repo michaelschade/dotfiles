@@ -82,19 +82,19 @@
     "when": "textInputFocus"
   },
 
-  // But shift+optn+left/right should still select the whole word
+  // And for shift+optn+left/right to operate similarly
   {
     "key": "shift+alt+left",
-    "command": "cursorWordStartLeftSelect",
+    "command": "cursorWordPartLeftSelect",
     "when": "textInputFocus && !editorHasSelection"
   },
   {
     "key": "shift+alt+right",
-    "command": "cursorWordStartRightSelect",
+    "command": "cursorWordPartRightSelect",
     "when": "textInputFocus && !editorHasSelection"
   },
 
-  // And allow optn+ctrl+left/right to move by word part (e.g. camelCase and snake_case)
+  // For full word jumping (start to end), use optn+ctrl+left/right
   {
     "key": "alt+ctrl+left",
     "command": "cursorWordStartLeft",
@@ -104,5 +104,17 @@
     "key": "alt+ctrl+right",
     "command": "cursorWordStartRight",
     "when": "textInputFocus"
+  },
+
+  // And the same shift selection support (entire word vs. part)
+  {
+    "key": "shift+alt+ctrl+left",
+    "command": "cursorWordStartLeftSelect",
+    "when": "textInputFocus && !editorHasSelection"
+  },
+  {
+    "key": "shift+alt+ctrl+right",
+    "command": "cursorWordStartRightSelect",
+    "when": "textInputFocus && !editorHasSelection"
   }
 ]
