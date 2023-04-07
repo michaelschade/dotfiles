@@ -92,5 +92,17 @@
     "key": "shift+alt+right",
     "command": "cursorWordStartRightSelect",
     "when": "textInputFocus && !editorHasSelection"
+  },
+
+  // And allow optn+ctrl+left/right to move by word part (e.g. camelCase and snake_case)
+  {
+    "key": "alt+ctrl+left",
+    "command": "cursorWordStartLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+ctrl+right",
+    "command": "cursorWordStartRight",
+    "when": "textInputFocus"
   }
 ]
