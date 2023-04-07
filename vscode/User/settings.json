@@ -49,12 +49,10 @@
     "markdown": false,
     "scminput": false
   },
-  "[python]": {
-    "editor.formatOnType": true,
-    "editor.defaultFormatter": "ms-python.python"
-  },
-  "python.poetryPath": "poetry",
-  "python.terminal.activateEnvironment": true,
+  "workbench.statusBar.visible": false,
   "python.venvPath": "${workspaceFolder}/.venv",
-  "workbench.statusBar.visible": false
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "terminal.integrated.tabs.enabled": true
 }

@@ -5,4 +5,3 @@ ZSH_THEME="michael"
 plugins=(git bundler dircycle gem knife poetry)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.zsh_secrets.sh
