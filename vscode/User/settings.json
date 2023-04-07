@@ -1,30 +1,21 @@
 {
+  // General settings
   "editor.inlineSuggest.enabled": true,
   "editor.formatOnPaste": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.sortJSON": true
-  },
   "editor.smoothScrolling": true,
-  "eslint.format.enable": true,
-  "editor.formatOnSave": true,
-  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
-  "terminal.integrated.copyOnSelection": true,
-  "window.zoomLevel": 1,
+  "editor.cursorBlinking": "phase",
   "editor.renderWhitespace": "all",
-  "editor.cursorBlinking": "phase", // idk
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.tabs.enabled": true,
+  "window.zoomLevel": 1,
   "window.autoDetectHighContrast": false,
   "workbench.tree.indent": 16,
-  "html.format.indentHandlebars": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.minimap.enabled": false,
-  "eslint.packageManager": "yarn",
+  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": false,
+  "debug.toolBarLocation": "docked",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.excludeGitIgnore": true,
   "colorize.languages": [
     "javascriptreact",
     "javascript",
@@ -35,13 +26,6 @@
   ],
   "colorize.hide_current_line_decorations": false,
   "colorize.decoration_type": "underline",
-  "explorer.confirmDragAndDrop": false,
-  "typescript.disableAutomaticTypeAcquisition": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "explorer.excludeGitIgnore": true,
-  "debug.toolBarLocation": "docked",
-  "workbench.activityBar.visible": false,
-  "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "github.copilot.enable": {
     "*": true,
     "yaml": false,
@@ -49,10 +33,45 @@
     "markdown": false,
     "scminput": false
   },
-  "workbench.statusBar.visible": false,
+
+  // JSON settings
+  "[json]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.sortJSON": true
+    }
+  },
+
+  // General JS/TS ecosystem settings
+  "eslint.packageManager": "yarn",
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+
+  // JavaScript
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+
+  // TypeScript
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Python
   "python.venvPath": "${workspaceFolder}/.venv",
   "[python]": {
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
   },
-  "terminal.integrated.tabs.enabled": true
+
+  // Other language-specific settings
+  "html.format.indentHandlebars": true
 }
