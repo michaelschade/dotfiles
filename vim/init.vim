@@ -1,1 +1,1 @@
-/Users/michael/repos/dotfiles/nvim/init.vim
+/Users/michael.schade/dotfiles/nvim/init.vim
