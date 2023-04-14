@@ -14,7 +14,6 @@ install_brew() {
 
 install_packages_darwin() {
   brew install cmake ctags-exuberant the_silver_searcher neovim tmux node libpq jq
-  brew install pyenv pyenv-virtualenv
 }
 
 install_packages_linux() {
