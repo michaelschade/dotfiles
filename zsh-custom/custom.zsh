@@ -42,8 +42,14 @@ IFS=":"
 export PATH="${path[*]}"
 IFS=$oldIFS
 
-# Homebrew configuration for M1 Macs
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Initialize Homebrew. Some of my environments require running in an x86
+# environment. ARCH_OVERRIDE="x86" *must* be set in ~/.zshrc *before* the
+# dotfile zshrc is sourced.
+if [ "$ARCH_OVERRIDE" = "x86" ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+else
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Terminal configuration
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
@@ -54,7 +60,7 @@ alias bi='bundle install'
 alias be='bundle exec'
 alias gg='git grep'
 alias hack='nethack'
-alias python='python3'
+fglg () {git log --color --oneline $@ | fzf --ansi --reverse --no-sort --preview 'git show --color {1}' | pyp 'x.split()[0]'}
 alias pip='python -m pip'
 alias x86brew='/usr/local/bin/brew'
 alias tree='tree --gitignore'
@@ -65,6 +71,27 @@ fi
 
 # Electron configuration
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/libffi/lib/pkgconfig"
+
+# Lazy load nvm whenever node is invoked
+export NVM_DIR="$HOME/.nvm"
+
+nvm() {
+  unset -f nvm node npm
+  . "$NVM_DIR/nvm.sh"
+  nvm "$@"
+}
+
+node() {
+  unset -f nvm node npm
+  . "$NVM_DIR/nvm.sh"
+  node "$@"
+}
+
+npm() {
+  unset -f nvm node npm
+  . "$NVM_DIR/nvm.sh"
+  npm "$@"
+}
 
 # SSH aliases
 alias excelsior="ssh michael@excelsior"

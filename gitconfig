@@ -1,11 +1,9 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
-name = Michael Schade
-	email = github@mschade.me
+  name = Michael Schade
+  email = github@mschade.me
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [pull]
-	rebase = true
+  rebase = true
 [core]
-	editor = vim
+  editor = vim
