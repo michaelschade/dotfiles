@@ -64,3 +64,12 @@
 [submodule "vim/bundle/tsuquyomi"]
 	path = vim/bundle/tsuquyomi
 	url = git@github.com:Quramy/tsuquyomi.git
+[submodule "vim/plugged/coc.nvim"]
+	path = vim/plugged/coc.nvim
+	url = git@github.com:neoclide/coc.nvim.git
+[submodule "vim/plugged/typescript-vim"]
+	path = vim/plugged/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
+[submodule "vim/plugged/vim-jsx-typescript"]
+	path = vim/plugged/vim-jsx-typescript
+	url = git@github.com:peitalin/vim-jsx-typescript.git
