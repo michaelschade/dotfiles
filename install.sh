@@ -86,7 +86,12 @@ create_directories() {
   mkdir -p $HOME/.config
 }
 
-install_vscode_extensions() {
+install_vscode() {
+  if [ "$(uname)" != "Darwin" ]; then
+    return 0
+  fi
+
+  brew install --cask visual-studio-code
   code --install-extension ms-vscode.js-debug-companion
   code --install-extension esbenp.prettier-vscode
   code --install-extension spywhere.guides
@@ -138,7 +143,4 @@ git submodule update --init --recursive --remote
 # must be fetched first
 install_vim_deps
 
-# Install VSCode extensions if code is setup
-if type code > /dev/null 2>&1; then
-  install_vscode_extensions
-fi
+install_vscode
