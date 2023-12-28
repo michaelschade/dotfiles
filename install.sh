@@ -10,6 +10,7 @@ check_dependency() {
 
 install_brew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 }
 
 install_packages_darwin() {
@@ -106,7 +107,9 @@ fi
 create_directories
 create_symlinks
 create_zshrc
+
 create_gitconfig
+git submodule update --init --recursive --remote
 
 # Setup vimproc for typescript
 setup_vimproc
@@ -115,5 +118,3 @@ setup_vimproc
 if type code > /dev/null 2>&1; then
   install_vscode_extensions
 fi
-
-git submodule update --recursive --remote
