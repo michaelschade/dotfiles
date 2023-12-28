@@ -14,7 +14,7 @@ install_brew() {
 }
 
 install_packages_darwin() {
-  brew install cmake ctags-exuberant the_silver_searcher neovim tmux node libpq jq
+  brew install cmake ctags-exuberant the_silver_searcher neovim tmux libpq jq
 }
 
 install_packages_linux() {
@@ -55,9 +55,29 @@ create_zshrc() {
   grep -qxF "source $ZSHRC_CUSTOM" ~/.zshrc || echo "source $ZSHRC_CUSTOM" >> ~/.zshrc
 }
 
-setup_vimproc() {
+install_nvm_node() {
+  echo "Installing nvm..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+  # Source nvm manually; lazily handled in zshrc going forward
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+  echo "Installing Node.js LTS version..."
+  nvm install --lts
+  nvm use --lts
+  nvm alias default 'lts/*'
+}
+
+install_vim_deps() {
+  # Compile vimproc
   pushd $PWD/vim/bundle/vimproc
   make
+  popd
+
+  # Build coc.nvim
+  pushd $PWD/vim/plugged/coc.nvim
+  npm ci
   popd
 }
 
@@ -103,16 +123,20 @@ else
   install_packages_linux
 fi
 
+install_nvm_node
+
 # Init home dir
 create_directories
 create_symlinks
 create_zshrc
 
+# Set up git and fetch submodules -- this affects subsequent commands
 create_gitconfig
 git submodule update --init --recursive --remote
 
-# Setup vimproc for typescript
-setup_vimproc
+# Install vim dependencies. These are submodules, so the respective submodules
+# must be fetched first
+install_vim_deps
 
 # Install VSCode extensions if code is setup
 if type code > /dev/null 2>&1; then

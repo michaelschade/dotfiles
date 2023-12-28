@@ -73,3 +73,6 @@
 [submodule "vim/plugged/vim-jsx-typescript"]
 	path = vim/plugged/vim-jsx-typescript
 	url = git@github.com:peitalin/vim-jsx-typescript.git
+[submodule "vim/plugged/copilot.vim"]
+	path = vim/plugged/copilot.vim
+	url = git@github.com:neoclide/coc.nvim.git
