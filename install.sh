@@ -32,6 +32,7 @@ create_symlinks() {
   ln -nsf $PWD/zsh-custom/zshrc $HOME/.zshrc_dotfiles
   ln -nsf $PWD/zsh $HOME/.zsh
   ln -nsf $PWD/Xresources $HOME/.Xresources
+  ln -nsf $PWD/divvy.plist $HOME/Library/Preferences/com.mizage.direct.Divvy.plist
 }
 
 # Make a private ~/.gitconfig that sources dotfiles, so the laptop can have
