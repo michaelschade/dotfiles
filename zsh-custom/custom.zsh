@@ -12,7 +12,7 @@ unsetopt beep notify hup
 bindkey -e
 
 # Autocompletion
-autoload -U compinit && compinit
+autoload -U compinit && compinit -C
 
 # Environment variables
 export PGUSER=postgres
@@ -72,8 +72,30 @@ fi
 # Electron configuration
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/libffi/lib/pkgconfig"
 
-# Lazy load nvm whenever node is invoked
+#################
+#   NVM SETUP   #
+#################
+
 export NVM_DIR="$HOME/.nvm"
+
+# nvm.sh is quite slow, so we lazily invoke it in shells. But we still need
+# node in the PATH for stuff like nvim plugins, so load in a default node
+# then lazy load in interactive shells.
+
+resolve_node_version() {
+  local ALIAS=$(cat $NVM_DIR/alias/default)
+  if [[ $ALIAS == "node" ]]; then
+    NODE_VERSION=$(ls -1 $NVM_DIR/versions/node/ | sort -V | tail -n 1)
+  else
+    NODE_VERSION=$ALIAS
+  fi
+  echo $NODE_VERSION
+}
+NODE_VERSION=$(resolve_node_version)
+NODE_DIR="$NVM_DIR/versions/node/$NODE_VERSION/bin"
+export PATH="$NODE_DIR:$PATH"
+
+# Lazy loaders
 
 nvm() {
   unset -f nvm node npm
@@ -92,6 +114,10 @@ npm() {
   . "$NVM_DIR/nvm.sh"
   npm "$@"
 }
+
+#################
+# END NVM SETUP #
+#################
 
 # SSH aliases
 alias excelsior="ssh michael@excelsior"
