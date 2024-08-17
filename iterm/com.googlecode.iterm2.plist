@@ -1618,6 +1618,8 @@
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>TmuxSyncClipboard</key>
+	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>
