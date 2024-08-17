@@ -13,6 +13,7 @@ bindkey -e
 
 # Autocompletion
 autoload -U compinit && compinit -C
+zstyle ':completion:*' matcher-list 'm:{a-z}={a-z} r:|-=**'
 
 # Environment variables
 export PGUSER=postgres
