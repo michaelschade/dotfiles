@@ -8,6 +8,8 @@
 	<false/>
 	<key>Default Bookmark Guid</key>
 	<string>64C031F4-7E3B-482C-A44F-5AFD5BC0A9E8</string>
+	<key>DoubleClickPerformsSmartSelection</key>
+	<true/>
 	<key>EnterCopyModeAutomatically</key>
 	<false/>
 	<key>HapticFeedbackForEsc</key>
@@ -732,6 +734,8 @@
 			</dict>
 			<key>Mouse Reporting</key>
 			<true/>
+			<key>Mouse Reporting allow clicks and drags</key>
+			<true/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
@@ -1052,9 +1056,11 @@
 				<real>0.86666667461395264</real>
 			</dict>
 			<key>Guid</key>
-			<string>015F0072-DDCF-4F56-9AE0-250B16332DB8</string>
+			<string>38B67E24-9D92-48B9-A852-EC3E2CD6FF1C</string>
+			<key>Has Hotkey</key>
+			<false/>
 			<key>Horizontal Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Jobs to Ignore</key>
@@ -1513,6 +1519,8 @@
 			</dict>
 			<key>Mouse Reporting</key>
 			<true/>
+			<key>Mouse Reporting allow clicks and drags</key>
+			<true/>
 			<key>Name</key>
 			<string>tmux</string>
 			<key>Non Ascii Font</key>
@@ -1576,7 +1584,7 @@
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
