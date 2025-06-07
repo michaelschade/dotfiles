@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Parse CLI options #
+IDLE_SECONDS=3600 # default 1 hour idle cutoff
+
+usage() {
+  cat <<EOF
+Usage: ${0##*/} [OPTIONS]
+
+Prune tmux sessions that are detached and idle.
+
+Options:
+  -i, --idle-time SEC    Seconds a detached session may remain idle
+                         before it is killed (default: $IDLE_SECONDS)
+
+  -h, --help             Show this help and exit
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --idle-time)
+      # value must follow and must not start with "-" …
+      if [[ $# -lt 2 || $2 == -* ]]; then
+        echo "Error: --idle-time requires a numeric argument" >&2
+        usage; exit 1
+      fi
+      IDLE_SECONDS=$2; shift 2 ;;
+    --idle-time=*)
+      IDLE_SECONDS=${1#*=}; shift ;;
+    -h|--help)
+      usage; exit 0 ;;
+    *)  echo "Unknown option: $1" >&2; usage; exit 1 ;;
+  esac
+done
+
+[[ "$IDLE_SECONDS" =~ ^[0-9]+$ ]] || { echo "idle-time must be an integer"; exit 1; }
+NOW=$(date +%s)
+echo "killing anything older than $IDLE_SECONDS seconds"
+
+# Locate tmux
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+TMUX_BIN=$(command -v tmux) || {
+  echo "tmux not found in PATH; install it or edit TMUX_BIN" >&2
+  exit 1
+}
+
+# Kill sessions that are detached *and* quiet for ≥ IDLE_SECONDS
+$TMUX_BIN list-sessions -F '#{session_name} #{session_attached} #{session_activity}' |
+while read -r name attached activity; do
+  if [[ $attached -eq 0 ]] && (( NOW - activity >= IDLE_SECONDS )); then
+    #$TMUX_BIN kill-session -t "$name"
+    echo "KILLING $name attached $attached with activity $activity"
+  else
+    echo "not killing $name attached $attached with activity $activity"
+  fi
+done

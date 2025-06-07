@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Startup script for iTerm that attaches to any unused tmux sessions before
+# startung a new one.
+
+# locate tmux
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+TMUX_BIN=$(command -v tmux) || {
+  echo "tmux not found in PATH; install it or edit TMUX_BIN" >&2
+  exit 1
+}
+
+# --- pick first detached session
+DETACHED=$(
+  $TMUX_BIN list-sessions -F '#{session_name} #{session_attached}' 2>/dev/null \
+  | awk '$2 == 0 {print $1; exit}' || true
+)
+
+if [[ -n $DETACHED ]]; then
+  exec "$TMUX_BIN" attach -t "$DETACHED"      # reuse idle session
+else
+  exec "$TMUX_BIN" new   -s "ws-$(date +%s)"  # fresh unique session
+fi

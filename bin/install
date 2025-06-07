@@ -1,4 +1,19 @@
-#!/bin/sh
+#!/usr/bin/env sh
+set -euo pipefail
+
+# locate repo root
+SOURCE=$0
+while [ -h "$SOURCE" ]; do # resolve symlinks
+  DIR=$(CDPATH= cd -- "$(dirname -- "$SOURCE")" && pwd)
+  SOURCE=$(readlink "$SOURCE")
+  [ "${SOURCE#/}" = "$SOURCE" ] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$SOURCE")" && pwd)
+DOTFILES_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+export DOTFILES_ROOT
+cd DOTFILES_ROOT
+
+# Install
 
 check_dependency() {
   if ! [ -x "$(command -v $1)" ]; then
@@ -22,18 +37,27 @@ install_packages_linux() {
 }
 
 create_symlinks() {
-  ln -nsf $PWD/gitconfig $HOME/.gitconfig_dotfiles
-  ln -nsf $PWD/tmux $HOME/.tmux
-  ln -nsf $PWD/tmux/tmux.conf $HOME/.tmux.conf
-  ln -nsf $PWD/vim $HOME/.vim
-  ln -nsf $PWD/vim/vimrc $HOME/.vimrc
-  ln -nsf $PWD/vim $HOME/.config/nvim
-  ln -nsf $PWD/nvim/init.vim $HOME/.config/nvim/init.vim
-  ln -nsf $PWD/zsh-custom $HOME/.zsh-custom
-  ln -nsf $PWD/zsh-custom/zshrc $HOME/.zshrc_dotfiles
-  ln -nsf $PWD/zsh $HOME/.zsh
-  ln -nsf $PWD/Xresources $HOME/.Xresources
-  #ln -nsf $PWD/divvy.plist $HOME/Library/Preferences/com.mizage.direct.Divvy.plist
+  ln -nsf $DOTFILES_ROOT/gitconfig $HOME/.gitconfig_dotfiles
+  ln -nsf $DOTFILES_ROOT/tmux $HOME/.tmux
+  ln -nsf $DOTFILES_ROOT/tmux/tmux.conf $HOME/.tmux.conf
+  ln -nsf $DOTFILES_ROOT/vim $HOME/.vim
+  ln -nsf $DOTFILES_ROOT/vim/vimrc $HOME/.vimrc
+  ln -nsf $DOTFILES_ROOT/vim $HOME/.config/nvim
+  ln -nsf $DOTFILES_ROOT/nvim/init.vim $HOME/.config/nvim/init.vim
+  ln -nsf $DOTFILES_ROOT/zsh-custom $HOME/.zsh-custom
+  ln -nsf $DOTFILES_ROOT/zsh-custom/zshrc $HOME/.zshrc_dotfiles
+  ln -nsf $DOTFILES_ROOT/zsh $HOME/.zsh
+  ln -nsf $DOTFILES_ROOT/Xresources $HOME/.Xresources
+  #ln -nsf $DOTFILES_ROOT/divvy.plist $HOME/Library/Preferences/com.mizage.direct.Divvy.plist
+}
+
+install_launchagents() {
+  if [[ $(uname) == "Darwin" ]]; then
+    "$DOTFILES_ROOT/bin/install-launchagents" \
+      || echo "⚠️  LaunchAgent step failed—continuing bootstrap"
+  else
+    echo "Skipping LaunchAgents; not macOS"
+  fi
 }
 
 # Make a private ~/.gitconfig that sources dotfiles, so the laptop can have
@@ -71,12 +95,12 @@ install_nvm_node() {
 
 install_vim_deps() {
   # Compile vimproc
-  pushd $PWD/vim/bundle/vimproc
+  pushd $DOTFILES_ROOT/vim/bundle/vimproc
   make
   popd
 
   # Build coc.nvim
-  pushd $PWD/vim/plugged/coc.nvim
+  pushd $DOTFILES_ROOT/vim/plugged/coc.nvim
   npm ci
   popd
 }
@@ -144,3 +168,5 @@ git submodule update --init --recursive --remote
 install_vim_deps
 
 install_vscode
+
+install_launchagents

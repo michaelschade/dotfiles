@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+###################################################
+# Jobs table · one quoted line per agent          #
+# <label>  <script> <interval-sec>  <extra-args…> #
+###################################################
+
+JOBS=(
+  "tmux-prune-idle  $DOTFILES_ROOT/bin/tmux-prune-idle   3600   --idle-time 3600"
+  # "another-task   $HOME/bin/whatever                   900    --foo bar"
+)
+
+LAUNCHD_DIR="$HOME/Library/LaunchAgents"
+LOG_DIR="$HOME/Library/Logs"
+WRAP_DIR="$HOME/.launchagent_wrappers" # wrapper scripts for things like log truncation
+mkdir -p "$LAUNCHD_DIR" "$LOG_DIR" "$WRAP_DIR"
+
+##########################################
+# Helper — build and load a single plist #
+##########################################
+
+create_agent() {
+  local label=$1 script=$2 interval=$3 ; shift 3   # $@ = extra args
+  local log="$LOG_DIR/com.$USER.$label.log"
+  local wrap="$WRAP_DIR/$label.sh"                 # path to the wrapper
+  local plist="$LAUNCHD_DIR/com.$USER.$label.plist"
+
+  # build wrapper script to truncate logs if >1mb
+  cat >"$wrap" <<EOS
+#!/usr/bin/env bash
+set -euo pipefail
+LOG="$log"
+MAX_KB=1024                             # 1 MiB
+if [[ -f \$LOG && \$(du -k "\$LOG" | cut -f1) -ge \$MAX_KB ]]; then
+  : > "\$LOG"
+fi
+exec "$script" "\$@"
+EOS
+  chmod +x "$wrap"
+
+  # build the plist
+  cat >"$plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+        "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.$USER.$label</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>$wrap</string>
+$(for arg in "$@"; do printf '      <string>%s</string>\n' "$arg"; done)
+    </array>
+
+    <key>StartInterval</key>
+    <integer>$interval</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>$log</string>
+    <key>StandardErrorPath</key>
+    <string>$log</string>
+  </dict>
+</plist>
+EOF
+
+  # (re)load the agent
+  launchctl unload "$plist" 2>/dev/null || true
+  launchctl load -w "$plist"
+  printf "✓  %-20s → every %4ss, log %s\n" "$label" "$interval" "$(basename "$log")"
+}
+
+##########################################
+# Iterate over JOBS (robust field-split) #
+##########################################
+
+for entry in "${JOBS[@]}"; do
+  # Tokenise safely into an array
+  read -r -a TOK <<<"$entry"
+
+  label=${TOK[0]}
+  script=${TOK[1]}
+  interval=${TOK[2]}
+  extra=("${TOK[@]:3}") # slice: args after the first three
+
+  create_agent "$label" "$script" "$interval" "${extra[@]}"
+done

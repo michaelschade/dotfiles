@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+set -eu
+
+# locate repo root
+SOURCE=$0
+while [ -h "$SOURCE" ]; do # resolve symlinks
+  DIR=$(CDPATH= cd -- "$(dirname -- "$SOURCE")" && pwd)
+  SOURCE=$(readlink "$SOURCE")
+  [ "${SOURCE#/}" = "$SOURCE" ] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$SOURCE")" && pwd)
+DOTFILES_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+cd $DOTFILES_ROOT
+
+# update
+
+brew update
+brew upgrade
+git pull
+git submodule foreach git pull origin master
